@@ -16,8 +16,8 @@ Assurez-vous d'avoir Python 3.8+ installé.
 
 1.  **Cloner le dépôt :**
     ```bash
-    git clone [https://github.com/votre_nom_utilisateur/votre_repo.git](https://github.com/votre_nom_utilisateur/votre_repo.git)
-    cd vote_repo
+    git clone [https://github.com/baptiste-lr/Classification_XGBoost.git](https://github.com/baptiste-lr/Classification_XGBoost.git)
+    cd Classification_XGBoost
     ```
 
 2.  **Installer les dépendances :**
