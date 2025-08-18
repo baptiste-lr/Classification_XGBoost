@@ -3,7 +3,7 @@
 ## 📖 Description du Projet
 Ce dépôt contient un pipeline complet de classification d'images satellite par apprentissage automatique, utilisant l'algorithme XGBoost (Extreme Gradient Boosting). Le projet ici toutes les bandes, de la préparation des données à la classification finale du raster.
 
-Les principales fonctionnalités incluent :
+Les principales fonctionnalités incluses :
 * **Ingénierie de Caractéristiques** : Création d'indices spectraux (NDVI, MNDWI, etc.) et de couches de texture pour enrichir les données d'entrée.
 * **Extraction de Données d'Entrait** : Utilisation de polygones de référence (Shapefile) pour extraire des pixels d'entraînement.
 * **Pipeline XGBoost** : Entrait d'un classificateur, optimisation des hyperparamètres via `Recherche aléatoireCV`, et évaluation des performances.
