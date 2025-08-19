@@ -108,6 +108,40 @@ def Classify_raster(raster_source, classifier_model, selected_features=None):
         
     return classified_data_pred, nodata_mask_flat
 
+def calculate_and_print_class_percentages(raster_path, class_mapping, nodata_value):
+    """
+    Calcule et affiche le pourcentage de pixels pour chaque classe dans le raster classifié.
+
+    Args:
+        raster_path (str): Chemin du raster classifié.
+        class_mapping (dict): Dictionnaire de mappage des IDs de classe aux noms de classe.
+        nodata_value (int): Valeur des pixels 'nodata' à exclure du calcul.
+    """
+    try:
+        with rasterio.open(raster_path) as src:
+            # Lire le raster en tant que tableau NumPy
+            classified_array = src.read(1)
+
+            # Créer un masque pour exclure les valeurs 'nodata'
+            valid_pixels_mask = classified_array != nodata_value
+            valid_pixels_count = np.sum(valid_pixels_mask)
+
+            if valid_pixels_count == 0:
+                print("Aucun pixel valide trouvé pour le calcul des pourcentages.")
+                return
+
+            # Compter les occurrences de chaque valeur de classe
+            unique_classes, counts = np.unique(classified_array[valid_pixels_mask], return_counts=True)
+
+            print("\n--- Pourcentage de pixels par classe dans l'image classifiée ---")
+            for class_id, count in zip(unique_classes, counts):
+                class_name = class_mapping.get(class_id, f"Classe inconnue ({class_id})")
+                percentage = (count / valid_pixels_count) * 100
+                print(f"  - {class_name}: {percentage:.2f}% ({count} pixels)")
+
+    except Exception as e:
+        print(f"Erreur lors du calcul des pourcentages de classes : {e}")
+
 
 def plot_results(y_true, y_pred, y_pred_proba, class_mapping, output_path, model_name):
     """
