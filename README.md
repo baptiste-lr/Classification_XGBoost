@@ -29,16 +29,16 @@ Assurez-vous d'avoir Python 3.8+ installé.
 1.  **Préparation des données :**
  Placez votre image satellite (GeoTIFF) et votre fichier de polygones de référence (Shapefile) dans le dossier `données/`.
 
-2.  **Configuration des chimies :**
+2.  **Configuration des codes :**
  Modifiez le fichier `config.ini` pour spécifier les chemins d'entrée et de sortie.
     ```ini
-    [Chémins]
+    [Chemins]
     input_raster = données/image_satellite.tif
     input_vector = données/polygones.shp
     output_dir = sorties/
     ```
 
-3.  **Lancer le pipeline :**
+4.  **Lancer le pipeline :**
  Exécutez le script principal depuis le terminal :
     ```bash
     scripts python/Main.py
